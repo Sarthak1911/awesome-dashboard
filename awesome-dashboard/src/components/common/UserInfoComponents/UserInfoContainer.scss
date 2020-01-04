@@ -1,0 +1,67 @@
+//Colors
+@import "../../../styles/colors/colors.scss";
+
+.content {
+  .user-info {
+    //     background-image: url("https://via.placeholder.com/1920X1080");
+
+    background: $primary-color;
+
+    height: 100vh;
+
+    .row {
+      height: 100%;
+    }
+
+    .brand-message-sm {
+      display: none;
+    }
+
+    .info-form {
+      color: $primary-color;
+      background: $white;
+
+      .text-uppercase {
+        letter-spacing: 0.3em;
+        font-weight: bolder;
+      }
+
+      .info-form-child {
+        height: 100%;
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 767px) {
+  .user-info {
+    .image-area {
+      color: $white;
+
+      height: 40%;
+
+      h3 {
+        font-size: 2em;
+        letter-spacing: 0.25em;
+      }
+
+      .muted {
+        font-size: 1.09em;
+      }
+
+      .brand-message-sm {
+        display: block;
+      }
+    }
+
+    .brand-message-lg {
+      display: none;
+    }
+
+    .info-form {
+      opacity: 0.8;
+      border-top-left-radius: 30px;
+      border-top-right-radius: 30px;
+    }
+  }
+}

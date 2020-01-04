@@ -1,9 +1,9 @@
 import React from "react";
 import "./Input.scss";
-const Input = ({ placeholder }) => {
+const Input = ({ placeholder, type }) => {
   return (
     <div className="form-group">
-      <input type="text" className="col" placeholder={placeholder} />
+      <input type={type} className="col" placeholder={placeholder} />
     </div>
   );
 };

@@ -1,6 +1,6 @@
 import React from "react";
-const Button = ({ text, style }) => {
-  return <button className={`btn col m-1 ${style}`}>{text}</button>;
+const Button = ({ text, btnType }) => {
+  return <button className={`btn m-1 ${btnType}`}>{text}</button>;
 };
 
 export default Button;
