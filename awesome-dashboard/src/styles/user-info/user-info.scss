@@ -1,0 +1,33 @@
+//Colors
+@import "../../../styles/colors/colors.scss";
+
+.content {
+  .user-info {
+    //     background-image: url("https://via.placeholder.com/1920X1080");
+    background-color: $primary-color;
+    height: 100vh;
+
+    .row {
+      height: inherit;
+      .col {
+        height: inherit;
+      }
+    }
+
+    .info-form {
+      z-index: 2;
+      height: inherit;
+      color: $primary-color;
+      background: $white;
+
+      .text-uppercase {
+        letter-spacing: 0.3em;
+        font-weight: bolder;
+      }
+
+      .info-form-child {
+        height: inherit;
+      }
+    }
+  }
+}

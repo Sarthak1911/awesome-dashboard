@@ -1,0 +1,16 @@
+//Colors
+@import "../../../../styles/colors/colors.scss";
+
+input {
+  border: 0;
+  border-bottom: 1px solid $primary-color;
+  padding: 10px 0;
+}
+
+input::placeholder {
+  color: $primary-color;
+}
+
+input:focus {
+  outline: none;
+}
