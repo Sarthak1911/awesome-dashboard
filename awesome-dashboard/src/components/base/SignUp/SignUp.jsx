@@ -35,7 +35,7 @@ class SignUp extends Component {
               <Input placeholder="Confirm Password" type="password" />
             </div>
           </div>
-          <div className="d-flex col justify-content-center">
+          <div className="d-flex col justify-content-center mt-4">
             <Checkbox label="I agree with terms and conditions" />
           </div>
           <div className="mt-5">

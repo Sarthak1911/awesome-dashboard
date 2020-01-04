@@ -3,11 +3,11 @@
 
 .content {
   .user-info {
-    //     background-image: url("https://via.placeholder.com/1920X1080");
-
     background: $primary-color;
+    background: url("../../../assets/images/back.png");
 
     height: 100vh;
+    overflow: auto;
 
     .row {
       height: 100%;
@@ -35,18 +35,19 @@
 
 @media only screen and (max-width: 767px) {
   .user-info {
+    background-size: contain;
     .image-area {
       color: $white;
 
-      height: 40%;
+      min-height: 20%;
 
       h3 {
-        font-size: 2em;
+        font-size: 1.5em;
         letter-spacing: 0.25em;
       }
 
       .muted {
-        font-size: 1.09em;
+        font-size: 1em;
       }
 
       .brand-message-sm {
