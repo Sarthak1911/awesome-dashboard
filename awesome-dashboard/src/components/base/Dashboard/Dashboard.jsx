@@ -1,49 +1,102 @@
 import React, { Component } from "react";
-import Sidebar from "./../../common/Sidebar/Sidebar";
-import NavLink from "./../../common/Sidebar/NavLink/NavLink";
-
+import { Link } from "react-router-dom";
 import "./Dashboard.scss";
+
 class Dashboard extends Component {
   state = {
-    isOpenSidebar: true
+    sidebarStatus: "full"
   };
 
-  handleSidebarToggle = ref => {
-    let { isOpenSidebar } = this.state;
+  constructor() {
+    super();
+  }
 
-    isOpenSidebar = !isOpenSidebar;
+  getSidebarClasses = () => {
+    const { sidebarStatus } = this.state;
 
-    this.setState({ isOpenSidebar });
+    if (sidebarStatus === "full") return "sidebar-full col-lg-2 col-md-4";
 
-    ref.current.style.display = isOpenSidebar ? "block" : "none";
+    if (sidebarStatus === "icons") return "sidebar-icons";
+
+    if (sidebarStatus === "none") return "sidebar-none";
+  };
+
+  handleToggleSidebarDesktop = () => {
+    console.log("Desktop");
+    let { sidebarStatus } = this.state;
+
+    //     if (sidebarStatus === "none") {
+    //       sidebarStatus = "icons";
+    //       this.setState({ sidebarStatus });
+    //       return;
+    //     }
+
+    sidebarStatus = sidebarStatus === "full" ? "icons" : "full";
+
+    this.setState({ sidebarStatus });
+  };
+
+  handleToggleSidebarMobile = () => {
+    console.log("Mobile");
+    let { sidebarStatus } = this.state;
+
+    if (sidebarStatus === "icons") {
+      sidebarStatus = "none";
+      this.setState({ sidebarStatus });
+      return;
+    }
+
+    sidebarStatus = sidebarStatus === "full" ? "none" : "full";
+
+    this.setState({ sidebarStatus });
   };
 
   render() {
     return (
-      <div className="container-fluid">
-        <div className="row">
-          <Sidebar
-            brandName="Awesome Dash"
-            onToggleSidebar={this.handleSidebarToggle}
-          >
-            <NavLink to="/" text="Home" icon="fa-home" />
-            <NavLink
-              to="/dashboard"
-              active
-              text="Dashboard"
-              icon="fa-bar-chart"
-            />
-            <NavLink to="/about-me" text="About Me" icon="fa-user-o" />
-            <NavLink to="/" text="Products" icon="fa-window-maximize" />
-            <NavLink to="/" text="Invoices" icon="fa-file" />
-            <NavLink to="/" text="Mail Marketing" icon="fa-envelope" />
-            <NavLink to="/" text="Chat Room" icon="fa-comments" />
-            <NavLink to="/" text="Calendar" icon="fa-calendar" />
-            <NavLink to="/" text="Help Center" icon="fa-question-circle" />
-            <NavLink to="/" text="Settings" icon="fa-cog" />
-          </Sidebar>
+      <React.Fragment>
+        {/* Button for mobile */}
+        <i
+          className="fa fa-bars toggle-mobile"
+          aria-hidden="true"
+          onClick={this.handleToggleSidebarMobile}
+        ></i>
+        <div
+          className={
+            "p-0 m-0 position-fixed sidebar bg-primary " +
+            this.getSidebarClasses()
+          }
+        >
+          <Link to="/" className="navitem text-light brand">
+            <div>
+              <span className="brand-name">Awesome Dash</span>
+              {/* Button for desktop */}
+              <i
+                className="fa fa-bars toggle-desktop"
+                aria-hidden="true"
+                onClick={this.handleToggleSidebarDesktop}
+              ></i>
+              {/* Button for mobile */}
+              <i
+                className="fa fa-bars toggle-mobile"
+                aria-hidden="true"
+                onClick={this.handleToggleSidebarMobile}
+              ></i>
+            </div>
+          </Link>
+          <Link to="/" className="navitem text-light active">
+            <div>
+              <i className="fa fa-home" aria-hidden="true"></i>
+              <span className="nav-text">Link 1</span>
+            </div>
+          </Link>
+          <Link to="/" className="navitem text-light">
+            <div>
+              <i className="fa fa-user-o" aria-hidden="true"></i>
+              <span className="nav-text">Link 2</span>
+            </div>
+          </Link>
         </div>
-      </div>
+      </React.Fragment>
     );
   }
 }
