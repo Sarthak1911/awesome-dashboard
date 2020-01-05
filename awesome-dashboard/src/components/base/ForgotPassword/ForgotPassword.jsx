@@ -1,25 +1,38 @@
 import React, { Component } from "react";
+import Joi from "joi-browser";
+import Form from "../../common/Form/form";
 import UserInfoContainer from "./../../common/UserInfoComponents/UserInfoContainer";
-import Input from "../../common/FormComponents/Input/Input";
-import Button from "./../../common/FormComponents/Button/Button";
 import "./ForgotPassword.scss";
 
-class ForgotPassword extends Component {
-  state = {};
+class ForgotPassword extends Form {
+  state = {
+    data: {
+      email: ""
+    },
+    errors: {}
+  };
+
+  schema = {
+    email: Joi.string()
+      .email()
+      .required()
+  };
+
+  doSubmit = () => {
+    console.log("Submitted");
+  };
 
   formMessage = "Enter your email and we send you a password reset link.";
-
-  style = {};
 
   render() {
     return (
       <UserInfoContainer formMessage={this.formMessage}>
         <form>
           <div className="col-12 mt-5">
-            <Input placeholder="Email" type="text" />
+            {this.renderInput("email", "email", "Email")}
           </div>
           <div className="col-12 mt-4">
-            <Button text="Send request" btnType="btn-primary col-6" />
+            {this.renderSubmitButton("Send Request", "btn btn-primary")}
           </div>
         </form>
       </UserInfoContainer>

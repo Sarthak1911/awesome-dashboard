@@ -1,9 +1,17 @@
 import React from "react";
 import "./Input.scss";
-const Input = ({ placeholder, type }) => {
+const Input = ({ label, name, error, ...rest }) => {
   return (
     <div className="form-group">
-      <input type={type} className="col" placeholder={placeholder} />
+      <input
+        name={name}
+        {...rest}
+        className="col"
+        id={name}
+        placeholder={label}
+      ></input>
+
+      {error && <div className="text-danger">{error}</div>}
     </div>
   );
 };

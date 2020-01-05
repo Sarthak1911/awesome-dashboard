@@ -4,7 +4,7 @@ import "./Dashboard.scss";
 
 class Dashboard extends Component {
   state = {
-    sidebarStatus: "none"
+    sidebarStatus: "full"
   };
 
   handleToggleSidebarDesktop = () => {
