@@ -1,0 +1,82 @@
+@import "../../../styles/colors/colors.scss";
+
+.sidebar {
+  height: 100vh;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  z-index: 2;
+  .toggle-mobile {
+    display: none;
+  }
+}
+
+//Everthing visible
+.sidebar-full {
+  width: 10%;
+  .nav-text,
+  .brand-name {
+    display: block;
+  }
+}
+
+//Icons visible
+.sidebar-icons {
+  width: auto;
+
+  .brand {
+    div {
+      padding-bottom: 31px;
+    }
+  }
+
+  .nav-text,
+  .brand-name {
+    display: none;
+  }
+}
+
+.sidebar-none {
+  display: none;
+
+  .nav-text,
+  .brand-name {
+    display: block;
+  }
+}
+
+@media only screen and (max-width: 767px) {
+  .sidebar {
+    width: 100%;
+    height: 100%;
+    overflow-y: auto;
+    overflow-x: hidden;
+
+    .toggle-mobile {
+      display: block;
+    }
+
+    .toggle-desktop {
+      display: none;
+    }
+  }
+
+  //Everthing visible
+  .sidebar-full {
+    width: 100%;
+    .nav-text,
+    .brand-name {
+      display: block;
+    }
+  }
+
+  //Icons visible
+  .sidebar-icons {
+    width: 100%;
+
+    .nav-text,
+    .brand-name {
+      display: block;
+    }
+  }
+}

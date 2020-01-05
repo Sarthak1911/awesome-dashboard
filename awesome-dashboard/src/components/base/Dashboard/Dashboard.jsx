@@ -1,24 +1,10 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
+import Sidebar from "./../../common/Sidebar/Sidebar";
 import "./Dashboard.scss";
 
 class Dashboard extends Component {
   state = {
-    sidebarStatus: "full"
-  };
-
-  constructor() {
-    super();
-  }
-
-  getSidebarClasses = () => {
-    const { sidebarStatus } = this.state;
-
-    if (sidebarStatus === "full") return "sidebar-full col-lg-2 col-md-4";
-
-    if (sidebarStatus === "icons") return "sidebar-icons";
-
-    if (sidebarStatus === "none") return "sidebar-none";
+    sidebarStatus: "none"
   };
 
   handleToggleSidebarDesktop = () => {
@@ -52,50 +38,28 @@ class Dashboard extends Component {
   };
 
   render() {
+    const { sidebarStatus } = this.state;
+
     return (
       <React.Fragment>
-        {/* Button for mobile */}
-        <i
-          className="fa fa-bars toggle-mobile"
-          aria-hidden="true"
-          onClick={this.handleToggleSidebarMobile}
-        ></i>
-        <div
-          className={
-            "p-0 m-0 position-fixed sidebar bg-primary " +
-            this.getSidebarClasses()
-          }
+        <nav
+          className="fixed-top nav bg-light shadow-sm"
+          style={{ zIndex: "1" }}
         >
-          <Link to="/" className="navitem text-light brand">
-            <div>
-              <span className="brand-name">Awesome Dash</span>
-              {/* Button for desktop */}
-              <i
-                className="fa fa-bars toggle-desktop"
-                aria-hidden="true"
-                onClick={this.handleToggleSidebarDesktop}
-              ></i>
-              {/* Button for mobile */}
-              <i
-                className="fa fa-bars toggle-mobile"
-                aria-hidden="true"
-                onClick={this.handleToggleSidebarMobile}
-              ></i>
-            </div>
-          </Link>
-          <Link to="/" className="navitem text-light active">
-            <div>
-              <i className="fa fa-home" aria-hidden="true"></i>
-              <span className="nav-text">Link 1</span>
-            </div>
-          </Link>
-          <Link to="/" className="navitem text-light">
-            <div>
-              <i className="fa fa-user-o" aria-hidden="true"></i>
-              <span className="nav-text">Link 2</span>
-            </div>
-          </Link>
-        </div>
+          <div className="d-flex justify-content-between ml-3">
+            <i
+              className="fa fa-bars toggle-desktop text-primary"
+              aria-hidden="true"
+              onClick={this.handleToggleSidebarDesktop}
+            ></i>
+            Nav
+          </div>
+        </nav>
+        <Sidebar
+          onToggleSidebarDesktop={this.handleToggleSidebarDesktop}
+          onToggleSidebarMobile={this.handleToggleSidebarMobile}
+          sidebarStatus={sidebarStatus}
+        />
       </React.Fragment>
     );
   }

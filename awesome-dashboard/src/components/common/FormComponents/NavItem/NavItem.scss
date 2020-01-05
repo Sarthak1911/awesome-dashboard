@@ -1,0 +1,56 @@
+@import "../../../../styles/colors/colors.scss";
+
+.navitem {
+  text-decoration: none;
+
+  div {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 20px;
+
+    .nav-text {
+      margin-left: 10px;
+      text-transform: capitalize;
+    }
+  }
+}
+
+.navitem:hover {
+  text-decoration: none;
+
+  div {
+    background: $primary-color-dark;
+  }
+}
+
+.active,
+.brand {
+  div {
+    background: $primary-color-dark;
+  }
+}
+
+.active {
+  div {
+    border-left: 6px solid $primary-color-light;
+    padding-left: 14px;
+
+    i {
+      color: $primary-color-light;
+    }
+  }
+}
+
+.brand {
+  div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .brand-name {
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+  }
+}
