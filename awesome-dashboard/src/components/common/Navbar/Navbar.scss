@@ -1,0 +1,24 @@
+@import "../../../styles/colors/colors.scss";
+nav {
+  padding: 20px;
+
+  .brand-name {
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-size: 1.2em;
+    font-weight: bold;
+    color: $primary-color;
+  }
+}
+
+.nav-icons-container {
+  border-right: 2px solid #e3e3e3;
+}
+
+@media only screen and (max-width: 767px) {
+  nav {
+    .brand-name {
+      display: none;
+    }
+  }
+}

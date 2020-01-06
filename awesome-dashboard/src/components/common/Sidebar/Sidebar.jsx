@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import NavItem from "./../FormComponents/NavItem/NavItem";
+import NavItem from "../NavItem/NavItem";
 import "./Sidebar.scss";
 
 const Sidebar = ({

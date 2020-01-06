@@ -11,11 +11,11 @@ class App extends Component {
     return (
       <div className="content" style={{ height: "100vh", overflow: "auto" }}>
         <Switch>
-          <Route path="/login" component={Login} />
-          <Route path="/sign-up" component={SignUp} />
-          <Route path="/forgot-password" component={ForgotPassword} />
-          <Route path="/not-found" component={NotFoundPage} />
-          <Route path="/" component={Dashboard} />
+          <Route path="/login" exact component={Login} />
+          <Route path="/sign-up" exact component={SignUp} />
+          <Route path="/forgot-password" exact component={ForgotPassword} />
+          <Route path="/not-found" exact component={NotFoundPage} />
+          <Route path="/" exact component={Dashboard} />
           <Redirect to="/not-found" />
         </Switch>
       </div>
