@@ -43,7 +43,7 @@ class Dashboard extends Component {
     return (
       <React.Fragment>
         <nav
-          className="fixed-top nav bg-light shadow-sm"
+          className="d-flex justify-content-between align-items-center fixed-top nav bg-light shadow-sm"
           style={{ zIndex: "1" }}
         >
           <div className="d-flex justify-content-between ml-3">
@@ -52,7 +52,32 @@ class Dashboard extends Component {
               aria-hidden="true"
               onClick={this.handleToggleSidebarDesktop}
             ></i>
-            Nav
+          </div>
+          <div className="d-flex justify-content-between align-items-center">
+            <div className="nav-icons-container">
+              <i
+                className="fa fa-question-circle toggle-desktop text-secondary mr-3"
+                aria-hidden="true"
+              ></i>
+              <i
+                className="fa fa-comments toggle-desktop text-secondary mr-3"
+                aria-hidden="true"
+              ></i>
+              <i
+                className="fa fa-bell toggle-desktop text-secondary mr-3"
+                aria-hidden="true"
+              ></i>
+            </div>
+            <div>
+              <button className="btn btn-link dropdown-toggle" type="button">
+                Jon Doe
+              </button>
+              <img
+                src="https://via.placeholder.com/40x0"
+                alt=""
+                className="rounded-circle"
+              />
+            </div>
           </div>
         </nav>
         <Sidebar

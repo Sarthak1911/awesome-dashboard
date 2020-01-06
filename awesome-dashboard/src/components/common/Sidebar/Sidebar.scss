@@ -13,6 +13,13 @@
 
 //Everthing visible
 .sidebar-full {
+  .brand {
+    div {
+      padding-top: 29px;
+      padding-bottom: 29px;
+    }
+  }
+
   width: 10%;
   .nav-text,
   .brand-name {
@@ -26,7 +33,8 @@
 
   .brand {
     div {
-      padding-bottom: 31px;
+      padding-top: 34px;
+      padding-bottom: 34px;
     }
   }
 
