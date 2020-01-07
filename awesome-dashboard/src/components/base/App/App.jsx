@@ -5,6 +5,8 @@ import NotFoundPage from "../../common/NotFoundPage/NotFoundPage";
 import SignUp from "./../SignUp/SignUp";
 import ForgotPassword from "../ForgotPassword/ForgotPassword";
 import Dashboard from "../Dashboard/Dashboard";
+import "./App.scss";
+
 class App extends Component {
   state = {};
   render() {

@@ -1,13 +1,30 @@
 import React, { Component } from "react";
-import Highcharts from "highcharts";
+import Highcharts, { color } from "highcharts";
 import HighchartsReact from "highcharts-react-official";
 import Navbar from "../../common/Navbar/Navbar";
 import Sidebar from "./../../common/Sidebar/Sidebar";
+import Chart from "./../../common/Chart/Chart";
+import {
+  getAllYears,
+  getGlobalSalesPerPlatform,
+  getGlobalSalesSelectedPlatform,
+  getAllPlatforms
+} from "./../../../services/gameService";
 import "./Dashboard.scss";
-class Dashboard extends Component {
+class Dashboard extends Chart {
   state = {
-    sidebarStatus: "none"
+    sidebarStatus: "full",
+    platformSales: {}
   };
+
+  constructor(props) {
+    super(props);
+    this.state.platformSales = this.getOption(
+      "areaspline",
+      getAllYears(),
+      getGlobalSalesPerPlatform()
+    );
+  }
 
   handleToggleSidebarDesktop = () => {
     let { sidebarStatus } = this.state;
@@ -37,19 +54,23 @@ class Dashboard extends Component {
     this.setState({ sidebarStatus });
   };
 
-  options = {
-    title: {
-      text: "My chart"
-    },
-    series: [
-      {
-        data: [1, 2, 3]
+  handleDropdownSelect = ({ target }) => {
+    const platform = target.innerHTML;
+    const series =
+      platform === "All"
+        ? getGlobalSalesPerPlatform()
+        : getGlobalSalesSelectedPlatform(platform);
+
+    this.setState({
+      platformSales: {
+        series,
+        dropdownTarget: platform
       }
-    ]
+    });
   };
 
   render() {
-    const { sidebarStatus } = this.state;
+    const { sidebarStatus, platformSales } = this.state;
 
     return (
       <React.Fragment>
@@ -62,11 +83,9 @@ class Dashboard extends Component {
               sidebarStatus={sidebarStatus}
             />
             <div className="dash-content offset-lg-2 offset-md-4 col">
-              <div className="card">
-                <HighchartsReact
-                  highcharts={Highcharts}
-                  options={this.options}
-                />
+              <h3 className="text-secondary">Overview</h3>
+              <div className="col-12 m-0 p-0">
+                {this.renderChart("Sales", platformSales, getAllPlatforms())}
               </div>
             </div>
           </div>
