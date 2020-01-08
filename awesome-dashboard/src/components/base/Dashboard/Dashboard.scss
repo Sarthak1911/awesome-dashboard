@@ -5,13 +5,29 @@
 }
 
 //Chart
-.chart-title-container {
-  margin-top: 20px;
-  margin-bottom: 20px;
-}
 
 .scrollable-menu {
   height: auto;
   max-height: 200px;
   overflow-x: hidden;
+}
+
+.dash-content-children {
+  div {
+    margin-bottom: 10px;
+  }
+}
+
+.highcharts-credits {
+  display: none;
+}
+
+//table
+.table-container {
+  height: 400px;
+}
+
+.table-container::-webkit-scrollbar {
+  width: 0px;
+  background: transparent;
 }

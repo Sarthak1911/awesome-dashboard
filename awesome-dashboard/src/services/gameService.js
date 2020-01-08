@@ -18,6 +18,40 @@ export function getAllPlatforms() {
   return [...new Set(getAll().map(game => game.Platform))];
 }
 
+export function getPlatformGames(platform) {
+  return getAll().filter(game => game.Platform === platform);
+}
+
+export function getGamesShare() {
+  let gamesShare = [];
+
+  const platforms = getAllPlatforms();
+
+  for (let platform of platforms) {
+    let games = getPlatformGames(platform);
+
+    let percentShare = Math.ceil((games.length / getAll().length) * 100);
+
+    gamesShare.push({ [platform]: percentShare });
+  }
+
+  return gamesShare;
+}
+
+export function getTopShares() {
+  const gamesShare = getGamesShare();
+
+  gamesShare.sort((object1, object2) => {
+    if (Object.values(object1) > Object.values(object2)) return -1;
+    if (Object.values(object1) < Object.values(object2)) return 1;
+    return 0;
+  });
+
+  return gamesShare
+    .slice(0, 2)
+    .map(game => [Object.keys(game)[0], Object.values(game)[0]]);
+}
+
 export function getGlobalSalesPerPlatform() {
   let sales = [];
   //Get all platforms

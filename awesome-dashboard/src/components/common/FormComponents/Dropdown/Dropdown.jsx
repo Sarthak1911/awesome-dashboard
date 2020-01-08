@@ -1,9 +1,9 @@
 import React from "react";
 const Dropdown = ({ dropdownTarget, dropdownItems, onDropdownSelect }) => {
   return (
-    <div className="dropdown">
+    <div className="dropdown m-0 p-0">
       <button
-        className="btn btn-light dropdown-toggle"
+        className="btn btn-light dropdown-toggle m-0 p-0"
         type="button"
         id="dropdownMenuButton"
         data-toggle="dropdown"
