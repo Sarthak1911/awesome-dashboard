@@ -14,6 +14,24 @@ export function getAllYears() {
   ];
 }
 
+export function getGenreWithMostGames() {
+  const allGenres = [...new Set(getAll().map(game => game.Genre))];
+
+  let topGenre = "";
+  let currentLength = 0;
+
+  for (let genre of allGenres) {
+    let totalGames = getAll().filter(game => game.Genre === genre).length;
+
+    if (totalGames > currentLength) {
+      currentLength = totalGames;
+      topGenre = genre;
+    }
+  }
+
+  return { genre: topGenre, games: currentLength };
+}
+
 export function getAllPlatforms() {
   return [...new Set(getAll().map(game => game.Platform))];
 }
@@ -48,7 +66,7 @@ export function getTopShares() {
   });
 
   return gamesShare
-    .slice(0, 2)
+    .slice(0, 3)
     .map(game => [Object.keys(game)[0], Object.values(game)[0]]);
 }
 

@@ -4,6 +4,8 @@ import { Link } from "react-router-dom";
 import UserInfoContainer from "../../common/UserInfoComponents/UserInfoContainer";
 import Form from "../../common/Form/form";
 import Button from "../../common/FormComponents/Button/Button";
+
+import { loginUser } from "./../../../services/userService";
 import "./Login.scss";
 class Login extends Form {
   state = {
@@ -31,7 +33,17 @@ class Login extends Form {
   };
 
   doSubmit = () => {
-    console.log("Submitted");
+    const { username, password } = this.state.data;
+
+    try {
+      const result = loginUser({ username, password });
+
+      localStorage.setItem("token", result);
+
+      this.props.history.replace("/dashboard");
+    } catch (e) {
+      alert(e);
+    }
   };
 
   formMessage = "Welcome back! Please login to your account.";

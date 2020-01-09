@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import Highcharts from "highcharts";
 import HighchartsReact from "highcharts-react-official";
+import "./Chart.scss";
 
 class Chart extends Component {
   state = {};
@@ -27,7 +28,7 @@ class Chart extends Component {
           name: "Games",
           data: data,
           size: "80%",
-          innerSize: "80%",
+          innerSize: "85%",
           showInLegend: true,
           dataLabels: {
             enabled: false
@@ -82,7 +83,7 @@ class Chart extends Component {
     const { gamesShare } = this.state;
 
     return (
-      <div className="d-flex flex-column card shadow rounded w-100 p-1">
+      <div className="d-flex flex-column card shadow rounded p-1">
         <div className="card-header bg-white p-1">
           <div className="text-secondary col">{title}</div>
           <div className="d-flex justify-content-between col">
@@ -94,10 +95,12 @@ class Chart extends Component {
           </div>
         </div>
         <div className="card-body m-0 p-0">
-          <HighchartsReact highcharts={Highcharts} options={gamesShare} />
+          <div>
+            <HighchartsReact highcharts={Highcharts} options={gamesShare} />
+          </div>
         </div>
         <div className="card-footer bg-white text-center m-0 p-2">
-          View Report
+          <span className="btn btn-link">View report</span>
         </div>
       </div>
     );
@@ -120,26 +123,24 @@ class Chart extends Component {
               </button>
               {
                 <div className="dropdown-menu scrollable-menu">
-                  <a
+                  <button
                     name={dropdownId}
                     className="dropdown-item"
-                    href="#"
                     key="All"
                     onClick={this.handleDropdownSelect}
                   >
                     All
-                  </a>
+                  </button>
                   {dropdownItems.map(item => {
                     return (
-                      <a
+                      <button
                         name={dropdownId}
                         className="dropdown-item"
-                        href="#"
                         key={item}
                         onClick={this.handleDropdownSelect}
                       >
                         {item}
-                      </a>
+                      </button>
                     );
                   })}
                 </div>
@@ -147,8 +148,10 @@ class Chart extends Component {
             </div>
           )}
         </div>
-        <div className="card-body m-0 p-0">
-          <HighchartsReact highcharts={Highcharts} options={options} />
+        <div className="d-flex justify-content-center card-body m-0 p-0">
+          <div className="w-100">
+            <HighchartsReact highcharts={Highcharts} options={options} />
+          </div>
         </div>
       </div>
     );

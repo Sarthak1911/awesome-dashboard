@@ -1,6 +1,6 @@
 import React from "react";
 import "./Navbar.scss";
-const Navbar = ({ onToggleSidebarDesktop }) => {
+const Navbar = ({ onLogoutUser, username, onToggleSidebarDesktop }) => {
   return (
     <nav
       className="d-flex justify-content-between align-items-center fixed-top bg-white shadow-sm"
@@ -36,10 +36,20 @@ const Navbar = ({ onToggleSidebarDesktop }) => {
           ></i>
         </div>
         <div className="d-flex align-items-center">
-          <div>
-            <a className="btn btn-link dropdown-toggle text-dark" href="#">
-              Jon Doe
-            </a>
+          <div className="dropdown">
+            <button
+              className="btn btn-link dropdown-toggle text-dark"
+              type="button"
+              id="profileDropdown"
+              data-toggle="dropdown"
+            >
+              {username}
+            </button>
+            <div className="dropdown-menu">
+              <button className="dropdown-item" onClick={onLogoutUser}>
+                Logout
+              </button>
+            </div>
           </div>
           <div>
             <img

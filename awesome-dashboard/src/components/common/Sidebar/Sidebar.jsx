@@ -22,7 +22,7 @@ const Sidebar = ({
         "p-0 m-0 position-fixed sidebar bg-primary " + getSidebarClasses()
       }
     >
-      <Link to="/" className="navitem text-light brand">
+      <Link to="/dashboard" className="navitem text-light brand">
         <div>
           <span className="brand-name">Awesome Dash</span>
           {/* Button for desktop */}
@@ -39,8 +39,16 @@ const Sidebar = ({
           ></i>
         </div>
       </Link>
-      <NavItem to="/" text="home" icon="fa-home" />
+      <NavItem to="/home" text="home" icon="fa-home" />
       <NavItem to="/dashboard" text="dashboard" icon="fa-bar-chart" />
+      <NavItem to="/about-me" text="about me" icon="fa-user-o" />
+      <NavItem to="/products" text="products" icon="fa-product-hunt" />
+      <NavItem to="/invoices" text="invoices" icon="fa-book" />
+      <NavItem to="/mail-marketing" text="mail marketing" icon="fa-envelope" />
+      <NavItem to="/chat-room" text="chat-room" icon="fa-comments" />
+      <NavItem to="/calendar" text="calendar" icon="fa-calendar" />
+      <NavItem to="/help-center" text="help center" icon="fa-question-circle" />
+      <NavItem to="/settings" text="settings" icon="fa-cog" />
     </div>
   );
 };

@@ -1,6 +1,7 @@
 import React from "react";
 import Joi from "joi-browser";
 import { Link } from "react-router-dom";
+import { registerUser } from "./../../../services/userService";
 import Form from "./../../common/Form/form";
 import UserInfoContainer from "./../../common/UserInfoComponents/UserInfoContainer";
 
@@ -44,14 +45,40 @@ class SignUp extends Form {
   };
 
   doSubmit = () => {
-    let { password, confirmPassword } = this.state.data;
+    let {
+      firstName,
+      lastName,
+      username,
+      email,
+      password,
+      agreeTerms,
+      confirmPassword
+    } = this.state.data;
 
     if (password !== confirmPassword) {
       this.setState({ errors: { confirmPassword: "Passwords don't match" } });
       return;
     }
 
-    console.log("Submitted");
+    if (!agreeTerms) return;
+
+    //     console.log({ firstName, lastName, username, email, password, agreeTerms });
+    try {
+      const result = registerUser({
+        firstName,
+        lastName,
+        username,
+        email,
+        password,
+        agreeTerms
+      });
+
+      localStorage.setItem("token", result);
+
+      this.props.history.replace("/dashboard");
+    } catch (e) {
+      alert(e);
+    }
   };
 
   formMessage = "Please complete to create your account.";
@@ -77,7 +104,11 @@ class SignUp extends Form {
               {this.renderInput("password", "password", "Password")}
             </div>
             <div className="col-12">
-              {this.renderInput("confirmPassword", "text", "Confirm password")}
+              {this.renderInput(
+                "confirmPassword",
+                "password",
+                "Confirm password"
+              )}
             </div>
           </div>
           <div className="mt-5">
@@ -85,6 +116,10 @@ class SignUp extends Form {
               "agreeTerms",
               "I agree with terms and conditions"
             )}
+            <span className="text-danger">
+              {this.state.data.agreeTerms ||
+                "Please agree to terms and condition"}
+            </span>
           </div>
           <div className="mt-5">
             {this.renderSubmitButton("Sign Up", "btn-primary col-6")}

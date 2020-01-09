@@ -1,0 +1,19 @@
+@import "../../../styles/colors/colors.scss";
+
+.text-gradient-primary {
+  background: -webkit-linear-gradient($primary-color, $primary-color-light);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.text-gradient-info {
+  background: -webkit-linear-gradient($info-color, $info-color-light);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.text-gradient-success {
+  background: -webkit-linear-gradient($success-color, $success-color-light);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}

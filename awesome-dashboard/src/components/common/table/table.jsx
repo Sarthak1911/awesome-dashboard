@@ -1,4 +1,6 @@
 import React from "react";
+import "./Table.scss";
+
 const Table = ({ data }) => {
   function displayTableHeaders() {
     //Can customize to your liking
@@ -6,7 +8,7 @@ const Table = ({ data }) => {
 
     //Map the keys to the header
     const headers = keys.map(key => (
-      <th className="text-uppercase" key={key}>
+      <th className="text-uppercase font-weight-light" key={key}>
         {key}
       </th>
     ));
@@ -19,7 +21,7 @@ const Table = ({ data }) => {
 
     return values
       .map(value => (
-        <tr>
+        <tr key={value.Rank}>
           <td>{value.Rank}</td>
           <td>{value.Name}</td>
           <td>{value.Platform}</td>
