@@ -122,9 +122,11 @@ class Dashboard extends Chart {
             />
             <div className={"dash-content col " + this.getDashboardClasses()}>
               <div>
-                <h3 className="text-primary font-weight-light ml-3">
-                  Overview
-                </h3>
+                <div className="d-lg-flex d-md-flex justify-content-between row m-0 p-0 dash-content-children">
+                  <div className="col-lg-1 col-md-1 col-sm-12 text-center mt-4 mb-4">
+                    <span className="h3 text-primary">Overview</span>
+                  </div>
+                </div>
                 <div className="d-lg-flex d-md-flex justify-content-between row m-0 p-0 dash-content-children">
                   <div className="col-lg-3 col-md-4 col-sm-12">
                     <QuickInfoCard

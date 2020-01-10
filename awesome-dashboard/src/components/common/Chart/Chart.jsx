@@ -83,24 +83,24 @@ class Chart extends Component {
     const { gamesShare } = this.state;
 
     return (
-      <div className="d-flex flex-column card shadow rounded p-1">
-        <div className="card-header bg-white p-1">
-          <div className="text-secondary col">{title}</div>
-          <div className="d-flex justify-content-between col">
-            <span>Most games in the market:</span>
-            <span className="text-success">
-              {/* Get the platform with the most games in the market */}
-              {top}
-            </span>
+      <div className="d-flex justify-content-center card shadow rounded p-1">
+        <div className="w-100">
+          <div className="card-header bg-white p-1">
+            <div className="text-secondary col">{title}</div>
+            <div className="d-flex justify-content-between col">
+              <span>Most games in the market:</span>
+              <span className="text-success">
+                {/* Get the platform with the most games in the market */}
+                {top}
+              </span>
+            </div>
           </div>
-        </div>
-        <div className="card-body m-0 p-0">
-          <div>
+          <div className="card-body m-0 p-0">
             <HighchartsReact highcharts={Highcharts} options={gamesShare} />
           </div>
-        </div>
-        <div className="card-footer bg-white text-center m-0 p-2">
-          <span className="btn btn-link">View report</span>
+          <div className="card-footer bg-white text-center m-0 p-2">
+            <span className="btn btn-link">View report</span>
+          </div>
         </div>
       </div>
     );

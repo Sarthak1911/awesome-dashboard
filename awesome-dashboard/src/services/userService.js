@@ -1,4 +1,6 @@
-const users = JSON.parse(localStorage.getItem("users"));
+const users = [];
+
+localStorage.setItem("users", JSON.stringify(users));
 
 export function getAllUsers() {
   return users;

@@ -1,11 +1,12 @@
 import React, { Component } from "react";
-import { Switch, Route, Redirect } from "react-router-dom";
+import { Switch, Route, Redirect, BrowserRouter } from "react-router-dom";
 import Login from "../Login/Login";
 import NotFoundPage from "../../common/NotFoundPage/NotFoundPage";
 import SignUp from "./../SignUp/SignUp";
 import ForgotPassword from "../ForgotPassword/ForgotPassword";
-import Dashboard from "../Dashboard/Dashboard";
+import AdminPage from "../AdminPage/AdminPage";
 import "./App.scss";
+import DashboardPage from "./../DashboardPage/DashboardPage";
 
 class App extends Component {
   state = {};
@@ -15,50 +16,28 @@ class App extends Component {
   render() {
     return (
       <div className="content" style={{ height: "100vh", overflow: "auto" }}>
-        <Switch>
-          <Route
-            path="/login"
-            exact
-            render={props => {
-              if (localStorage.getItem(this.token)) {
-                return <Redirect to="/dashboard" />;
-              }
-              return <Login {...props} />;
-            }}
-          />
-          <Route
-            path="/sign-up"
-            exact
-            render={props => {
-              if (localStorage.getItem(this.token)) {
-                return <Redirect to="/dashboard" />;
-              }
-              return <SignUp {...props} />;
-            }}
-          />
-          <Route
-            path="/forgot-password"
-            exact
-            render={props => {
-              if (localStorage.getItem(this.token)) {
-                return <Redirect to="/dashboard" />;
-              }
-              return <ForgotPassword {...props} />;
-            }}
-          />
-          <Route
-            path="/dashboard"
-            exact
-            render={props => {
-              if (!localStorage.getItem(this.token)) {
-                return <Redirect to="/login" />;
-              }
-              return <Dashboard {...props} />;
-            }}
-          />
-          <Route path="/not-found" exact component={NotFoundPage} />
-          <Redirect to="/not-found" />
-        </Switch>
+        <BrowserRouter>
+          <Switch>
+            <Route path="/login" exact render={props => <Login {...props} />} />
+            <Route
+              path="/sign-up"
+              exact
+              render={props => <SignUp {...props} />}
+            />
+            <Route
+              path="/forgot-password"
+              exact
+              render={props => <ForgotPassword {...props} />}
+            />
+            <Route
+              path="/not-found"
+              exact
+              render={props => <NotFoundPage {...props} />}
+            />
+            <Route path="/admin" render={props => <AdminPage {...props} />} />
+            <Redirect to="/not-found" />
+          </Switch>
+        </BrowserRouter>
       </div>
     );
   }
