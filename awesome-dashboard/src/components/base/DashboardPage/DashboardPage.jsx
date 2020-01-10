@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import QuickInfoCard from "./../../common/QuickInfoCard/QuickInfoCard";
 import Chart from "../../common/Chart/Chart";
 import TableCard from "./../../common/TableCard/TableCard";
@@ -56,7 +56,7 @@ class DashboardPage extends Chart {
   };
 
   render() {
-    const { sidebarStatus, platformSales, platformSalesDuplicate } = this.state;
+    const { platformSales, platformSalesDuplicate } = this.state;
 
     return (
       <React.Fragment>

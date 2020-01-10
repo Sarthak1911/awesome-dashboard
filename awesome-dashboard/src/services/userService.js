@@ -24,6 +24,10 @@ export function registerUser(newUser) {
   return newUser.username;
 }
 
+export function forgotPassword(email) {
+  alert(`Instructions to reset password are sent to ${email}`);
+}
+
 export function loginUser(userInfo) {
   const existsUser = users.find(user => user.username === userInfo.username);
 

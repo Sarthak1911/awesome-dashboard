@@ -57,6 +57,7 @@ class App extends Component {
                 return <AdminPage {...props} />;
               }}
             />
+            <Redirect path="/" to="/login" />
             <Redirect to="/not-found" />
           </Switch>
         </BrowserRouter>

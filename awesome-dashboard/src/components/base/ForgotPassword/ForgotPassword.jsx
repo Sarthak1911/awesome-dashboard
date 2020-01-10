@@ -2,6 +2,7 @@ import React from "react";
 import Joi from "joi-browser";
 import Form from "../../common/Form/form";
 import UserInfoContainer from "./../../common/UserInfoComponents/UserInfoContainer";
+import { forgotPassword } from "./../../../services/userService";
 import "./ForgotPassword.scss";
 
 class ForgotPassword extends Form {
@@ -19,7 +20,11 @@ class ForgotPassword extends Form {
   };
 
   doSubmit = () => {
-    console.log("Submitted");
+    const { email } = this.state.data;
+
+    forgotPassword(email);
+
+    this.props.history.replace("/login");
   };
 
   formMessage = "Enter your email and we send you a password reset link.";
