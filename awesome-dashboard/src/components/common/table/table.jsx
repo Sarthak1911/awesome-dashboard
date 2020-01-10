@@ -8,7 +8,7 @@ const Table = ({ data }) => {
 
     //Map the keys to the header
     const headers = keys.map(key => (
-      <th className="text-uppercase font-weight-light" key={key}>
+      <th className="text-uppercase text-secondary" key={key}>
         {key}
       </th>
     ));
@@ -36,7 +36,7 @@ const Table = ({ data }) => {
   return (
     <div className="table-responsive-sm table-responsive-md table-container overflow-auto">
       <table className="table borderless">
-        <thead className="bg-light border">
+        <thead>
           <tr>{displayTableHeaders()}</tr>
         </thead>
         <tbody>{displayData()}</tbody>

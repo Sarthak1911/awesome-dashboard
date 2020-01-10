@@ -10,11 +10,11 @@ export function registerUser(newUser) {
   //Check if the user already exists
   const existsEmail = users.find(user => user.email === newUser.email);
   const existsUsername = users.find(user => user.username === newUser.username);
-  if (existsEmail) {
-    throw new Error("Email already taken");
-  }
   if (existsUsername) {
     throw new Error("Username already taken");
+  }
+  if (existsEmail) {
+    throw new Error("Email already taken");
   }
   //Add the user
   users.push(newUser);

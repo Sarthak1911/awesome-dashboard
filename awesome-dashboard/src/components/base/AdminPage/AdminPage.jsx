@@ -4,6 +4,7 @@ import Navbar from "./../../common/Navbar/Navbar";
 import Sidebar from "./../../common/Sidebar/Sidebar";
 import DashboardPage from "./../DashboardPage/DashboardPage";
 import AboutMePage from "./../AboutMePage/AboutMePage";
+import { logoutUser } from "../../../services/userService";
 import "./AdminPage.scss";
 class AdminPage extends Component {
   state = {
@@ -38,12 +39,17 @@ class AdminPage extends Component {
     this.setState({ sidebarStatus });
   };
 
+  handleLogoutUser = () => {
+    logoutUser("token");
+    this.props.history.replace("/login");
+  };
+
   getMainContentClasses = () => {
     const { sidebarStatus } = this.state;
 
     if (sidebarStatus === "full") return "offset-lg-2 offset-md-4 w-75";
     if (sidebarStatus === "icons") return "w-75";
-    if (sidebarStatus === "none") return "w-100";
+    if (sidebarStatus === "none") return "w-75";
   };
 
   render() {
@@ -69,12 +75,20 @@ class AdminPage extends Component {
                   <Route
                     path="/admin/dashboard"
                     exact
-                    render={props => <DashboardPage {...props} />}
+                    render={props => {
+                      if (!localStorage.getItem("token"))
+                        return <Redirect to="/login" />;
+                      return <DashboardPage {...props} />;
+                    }}
                   />
                   <Route
                     path="/admin/about-me"
                     exact
-                    render={props => <AboutMePage {...props} />}
+                    render={props => {
+                      if (!localStorage.getItem("token"))
+                        return <Redirect to="/login" />;
+                      return <AboutMePage {...props} />;
+                    }}
                   />
                   <Redirect path="/admin" to="/admin/home" />
                 </Switch>

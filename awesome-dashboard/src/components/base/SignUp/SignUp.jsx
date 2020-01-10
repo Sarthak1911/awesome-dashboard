@@ -75,7 +75,7 @@ class SignUp extends Form {
 
       localStorage.setItem("token", result);
 
-      this.props.history.replace("/dashboard");
+      this.props.history.replace("/admin");
     } catch (e) {
       alert(e);
     }
